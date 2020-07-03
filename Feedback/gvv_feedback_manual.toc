@@ -1,0 +1,7 @@
+\contentsline {section}{\numberline {1}Feedback Voltage Amplifier: Series-Shunt}{1}{section.1}
+\contentsline {section}{\numberline {2}Feedback Current Amplifier: Shunt-Series}{1}{section.2}
+\contentsline {subsection}{\numberline {2.1}Ideal Case}{1}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Practical Case}{1}{subsection.2.2}
+\contentsline {section}{\numberline {3}Feedback Current Amplifier: Example}{1}{section.3}
+\contentsline {section}{\numberline {4}Feedback Transconductance Amplifier: Series-Series}{1}{section.4}
+\contentsline {section}{\numberline {5}Feedback Problem}{1}{section.5}

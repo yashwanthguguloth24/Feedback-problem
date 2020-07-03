@@ -1,0 +1,116 @@
+\begin{enumerate}[label=\thesection.\arabic*.,ref=\thesection.\theenumi]
+\numberwithin{equation}{enumi}
+
+\item A two-pole amplifier for which $G_{o}=10^{3}$ and having
+poles at 1 MHz and 10 MHz is to be connected as a differentiator. On the basis of the rate-of-closure rule, what is the smallest differentiator time constant for which operation is stable? What are the corresponding gain and phase
+margins? \\
+\solution The differentiator circuit is as shown in Fig. \ref{fig:ee18btech11017_differentiator}.Here $\tau=RC$
+\renewcommand{\thefigure}{\theenumi.\arabic{figure}}
+%
+\begin{figure}[!ht]
+	\begin{center}
+		
+		\resizebox{\columnwidth}{!}{\input{./figs/differentiator.tex}}
+	\end{center}
+\caption{}
+\label{fig:ee18btech11017_differentiator}
+\end{figure}
+%
+
+\renewcommand{\thefigure}{\theenumi}
+
+For the above circuit using supersposition theorem we can write,
+\begin{align}
+V_{f}=\brak{\frac{R}{R+\frac{1}{SC}}}V_{i}+\brak{\frac{\frac{1}{SC}}{R+\frac{1}{SC}}}V_{o}
+\label{eq:ee18btech11017_fb1}
+\end{align}
+
+\item Draw the equivalent control system. \\
+\solution 
+\begin{figure}[!ht]
+	\begin{center}
+		
+		\resizebox{\columnwidth}{!}{\input{./figs/BlockDiagram.tex}}
+	\end{center}
+\caption{}
+\label{fig:ee18btech11017_blockdiagram}
+\end{figure}
+%
+
+\renewcommand{\thefigure}{\theenumi}
+\begin{table}[!ht]
+\centering
+\input{./tables/ee18btech11017_t1.tex}
+\caption{}
+\label{table:ee18btech11017_table1}
+\end{table}
+
+
+\item Find feedback factor H and open loop gain G. \\
+\solution
+From the above table,
+\begin{align}
+H(s) =\frac{1}{1+sRC} \\
+\implies \frac{1}{H(s)}=1+sRC \approx sRC \\
+G(s) =\frac{10^3}{\brak{1+\frac{s}{2\pi \cdot 10^6}}\brak{1+\frac{s}{2\pi \cdot 10^7}}}
+\end{align}
+
+\item Rate of Closure rule \\
+\solution The rule states that at intersection of $20\log\abs{\frac{1}{H(\j\omega)}}$ and $20\log\abs{G(\j\omega)}$ the difference of the slopes (called the rate of closure) should not exceed 20dB/decade.
+
+The Bode plot for $\frac{1}{\abs{H\brak{\j\omega}}}$ has a slope of +20dB/decade.Therefore , the closed-loop amplifier will be stable if $20\log\brak{\frac{1}{H}}$ line intersects the $20\log\abs{G}$ curve at a point on the 0dB/decade segment.\\
+The 0dB/decade segment of the $20\log\abs{G}$ curve is $G_{o}=10^{3}$.We should test the stability at the pole frequency $\omega_{P1}=2\pi\cdot10^{6}$ which seperate the 0dB/decade segment and the -20dB/decade.Thus we can write that as,
+
+\begin{align}
+20\log\abs{G_{o}}-20\log\brak{\frac{1}{H(\j\omega_{P1})}} &\leq 20dB \\
+\implies \abs{G_{o}H(\j\omega_{P1})} & \leq 1
+\end{align}
+Substituting,
+\begin{align}
+G_{o} \frac{1}{\omega_{P1} \tau} \leq 1 \\
+\therefore \tau \geq \frac{G_{o}}{\omega_{P1}}= \frac{10^{3}}{2\pi\cdot 10^{6}}=159.15 \mu s \\
+\label{eq:ee18btech11017_fb2}
+\implies \tau_{min}=159.15 \mu s
+\end{align}
+
+
+\item
+Find Phase Margin and Gain Margin for $\tau=\tau_{min}$. \\
+\solution 
+From the Equation \eqref{eq:ee18btech11017_fb2} 
+\begin{align}
+\text{ At} , \tau =\tau_{min} \\
+\abs{G_{o}H(\j\omega_{P1})} =1 \\
+\implies P.M = \angle G(\j\omega_{P1})H(\j\omega_{P1})+180\degree
+\end{align}
+
+So,
+\begin{align}
+\angle G\brak{\j\omega_{P1}} &= -tan^{-1}\brak{\frac{\omega_{P1}}{2\pi\cdot10^{6}}}-tan^{-1}\brak{\frac{\omega_{P1}}{2\pi\cdot10^{7}}} \\
+&=-50.71\degree \\
+\angle H\brak{\j\omega_{P1}} &=-90\degree \\
+\implies P.M &= 180\degree-50.71\degree-90\degree =39.29\degree \\
+\therefore P.M &= 39.29\degree
+\end{align}
+
+For Gain Margin we need to find $\omega_{180}$ such that 
+\begin{align}
+\angle G(\j\omega_{180})H(\j\omega_{180})= -180\degree \\
+\implies -tan^{-1}\brak{\frac{\omega_{180}}{2\pi\cdot10^{6}}}-tan^{-1}\brak{\frac{\omega_{180}}{2\pi\cdot10^{7}}}-90\degree &=-180\degree
+\end{align}
+Solving we get,
+\begin{align}
+\omega_{180}&=19.98M rad/s
+\end{align}
+The Gain Margin is as follows,
+\begin{align}
+GM &= -20\log\abs{G\brak{\j\omega_{180}}H\brak{\j\omega_{180}}} \\
+&= -20\log\abs{G\brak{\j\omega_{180}}}+20\log\abs{\frac{1}{H\brak{\j\omega_{180}}}} \\
+&= -49.12+70.05 \\
+\therefore G.M &= 20.93 dB
+\end{align}
+
+
+
+
+\end{enumerate}

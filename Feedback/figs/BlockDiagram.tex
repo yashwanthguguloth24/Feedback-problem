@@ -1,0 +1,20 @@
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+\tikzstyle{block} = [draw, rectangle]
+\tikzstyle{sum} = [draw, circle]
+
+\begin{tikzpicture}[auto, node distance=2cm,>=latex']
+    \node [input, name=input] {$I_s$};
+    \node [block, right of=input] (gain) {$K$};
+    \node [sum, right of=gain] (sum) {};
+    \node [block, right of=sum] (controller) {$G$};
+    \node [output, right of=controller] (output) {};
+    \node [block, below of=controller] (feedback) {$H$};
+    \draw [draw,->] (input) -- node {$V_{i}$} (gain);
+    \draw [->] (gain) -- node {} (sum);
+    \draw [->] (sum) -- node  {$V_f$}(controller);
+    \draw [->] (controller) --node[name=y]{$V_o$}(output);
+    \draw [->] (y) |- (feedback);
+    \draw [->] (feedback) -| node[pos=0.95]{$-$}  node [near end] {} (sum);
+    \draw [->] (feedback) -| node[pos=1.15]{$+$}  node [near end] {} (sum);
+\end{tikzpicture}
